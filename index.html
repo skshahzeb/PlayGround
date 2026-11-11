@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#071b15" />
+  <link rel="icon" href="data:," />
+  <title>BOUNDARY — 3D Cricket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="scene" aria-label="3D cricket ground"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Boundary Cricket home"><span class="brand-mark">B</span><span>BOUNDARY<span class="brand-sub">CLUB CRICKET</span></span></a>
+      <div class="top-right"><span class="live-pill"><i></i><span id="statusLabel">MATCH DAY</span></span><button class="sound-btn" id="soundBtn" aria-label="Toggle sound">♫ <span>SOUND ON</span></button></div>
+    </header>
+
+    <section class="scoreboard" id="scoreboard" aria-live="polite">
+      <div class="score-team"><span class="team-dot"></span><span id="teamName">YOUR XI</span><span class="innings-tag" id="inningsTag">1ST INNINGS</span></div>
+      <div class="score-main"><strong id="runs">0</strong><span class="slash">/</span><span id="wickets">0</span><span class="overs">(<span id="overs">0.0</span> ov)</span></div>
+      <div class="score-bottom"><span id="targetText">TARGET <b>20</b></span><span class="score-separator">·</span><span id="ballsLeft">12 BALLS LEFT</span><span class="score-separator">·</span><span>CRR <b id="crr">0.00</b></span></div>
+      <div class="score-opponent"><span>OPPONENT</span><b id="opponentScore">—</b></div>
+    </section>
+
+    <div class="match-chip"><span class="sun-icon">☀</span> <span>THE OVAL</span><span class="chip-divider"></span><span id="conditions">CLEAR · 24°C</span></div>
+
+    <section class="center-message" id="centerMessage" aria-live="assertive">
+      <div class="message-kicker" id="messageKicker">READY WHEN YOU ARE</div>
+      <h1 id="messageTitle">OWN THE<br/><em>CREASE.</em></h1>
+      <p id="messageCopy">Read the ball. Find the gap. Make it count.</p>
+      <button class="primary-btn" id="startBtn">STEP UP TO BAT <span>↗</span></button>
+      <div class="menu-options" id="menuOptions"><button class="text-btn" id="modeBtn">PLAY ONLINE <span>↗</span></button><span class="menu-dot">·</span><button class="text-btn" id="rulesBtn">HOW TO PLAY</button></div>
+      <div class="online-panel hidden" id="onlinePanel">
+        <p class="panel-title">PLAY A FRIEND ONLINE</p>
+        <button class="primary-btn host-btn" id="hostBtn">CREATE ROOM <span>＋</span></button>
+        <div class="join-row"><input id="roomInput" maxlength="6" placeholder="ROOM CODE" aria-label="Room code"/><button id="joinBtn">JOIN ↗</button></div>
+        <p class="online-status" id="onlineStatus">Both players bat their own innings. Highest score wins.</p>
+        <button class="back-link" id="backBtn">← BACK</button>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" role="status"></div>
+    <div class="bowling-indicator" id="bowlingIndicator"><span class="pulse-dot"></span><span id="bowlingText">BOWLER IN MOTION</span></div>
+
+    <div class="bottom-ui">
+      <div class="ball-track" aria-label="Balls in over" id="ballTrack"></div>
+      <div class="control-row">
+        <button class="shot-btn direction" data-direction="left" aria-label="Aim leg side"><span class="arrow">↙</span><small>LEG SIDE</small></button>
+        <button class="shot-btn hit-btn" id="hitBtn"><span class="hit-label">HIT IT</span><span class="hit-icon">↗</span><small id="hitHint">TAP AT THE CREASE</small></button>
+        <button class="shot-btn direction" data-direction="straight" aria-label="Aim straight"><span class="arrow">↑</span><small>STRAIGHT</small></button>
+        <button class="shot-btn direction" data-direction="right" aria-label="Aim off side"><span class="arrow">↘</span><small>OFF SIDE</small></button>
+      </div>
+      <div class="keyboard-hint"><span>← →</span> AIM <span class="keycap">SPACE</span> SWING <span class="keycap">R</span> RUN</div>
+    </div>
+
+    <section class="modal hidden" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="modal-card"><div class="message-kicker" id="resultKicker">INNINGS COMPLETE</div><h2 id="resultTitle">WHAT A<br/><em>CHASE.</em></h2><p id="resultCopy">A brilliant knock under pressure.</p><div class="result-score"><span id="resultScore">0/0</span><small>FROM 2 OVERS</small></div><div class="result-actions"><button class="primary-btn" id="playAgainBtn">PLAY AGAIN <span>↗</span></button><button class="text-btn" id="menuBtn">MAIN MENU</button></div></div>
+    </section>
+    <div class="footer-note">A GAME OF INSTINCT <span>✦</span> BUILT FOR THE LOVE OF CRICKET</div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
