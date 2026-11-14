@@ -202,7 +202,7 @@ function startFromButton(){resetMatch();}
 $('#playButton').addEventListener('click',startFromButton);
 $('#againButton').addEventListener('click',resetMatch);
 $('#swingControl').addEventListener('pointerdown',e=>{e.preventDefault();swing();});
-renderer.domElement.addEventListener('pointerdown',e=>{if(playing&&e.clientY>innerHeight*.42)swing();});
+stage.addEventListener('pointerdown',e=>{if(playing&&e.clientY>innerHeight*.42)swing();});
 window.addEventListener('keydown',e=>{
  if(e.code==='Space'){e.preventDefault();if(!playing&&state==='menu')startFromButton();else swing();}
  if(e.code==='Enter'&&state==='menu')startFromButton();
