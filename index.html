@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101619" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23d8f16a'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='sans-serif' font-size='15' font-weight='700' fill='%2318211c'%3ELL%3C/text%3E%3C/svg%3E" />
+  <title>Lot Legends — Car for Sale Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main id="game">
+    <canvas id="world" aria-label="3D dealership driving game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lot Legends home"><span class="brand-mark">LL</span><span>LOT<span class="brand-light">LEGENDS</span></span></a>
+      <div class="top-center"><span class="live-dot"></span><span id="locationLabel">RIVERSIDE · DEALERSHIP</span></div>
+      <div class="top-right"><div class="day-pill"><span class="sun-icon">☀</span><span id="dayLabel">DAY 01</span><i></i><span id="timeLabel">08:30</span></div><button class="icon-btn" id="soundButton" aria-label="Toggle sound">♫</button><button class="icon-btn" id="saveButton" aria-label="Save game">↧</button></div>
+    </header>
+    <section class="hud-left">
+      <div class="money-card"><div class="eyebrow">AVAILABLE CASH <span class="cash-dot"></span></div><div id="moneyLabel" class="money-value">$12,500</div><div class="cash-caption"><span>↗</span> <span id="profitLabel">Ready to make a deal</span></div></div>
+      <div class="rank-card"><div class="rank-line"><span class="eyebrow">DEALER REP</span><span id="repLabel">★ 1.0</span></div><div class="rep-track"><i id="repBar"></i></div><div class="rank-bottom"><span id="rankLabel">ROOKIE DEALER</span><span id="inventoryCount">0 / 3 CARS</span></div></div>
+    </section>
+    <section class="hud-right">
+      <div class="minimap-card"><div class="mini-head"><span>RIVERSIDE DISTRICT</span><span class="map-north">N ↑</span></div><div id="minimap" class="minimap"><div class="map-road map-road-a"></div><div class="map-road map-road-b"></div><div class="map-block block-a"></div><div class="map-block block-b"></div><div class="map-block block-c"></div><div class="map-block block-d"></div><div class="map-zone zone-lot">LL</div><div class="map-zone zone-market">$</div><div class="map-player" id="mapPlayer"></div></div><div class="map-legend"><span><i class="legend-you"></i> YOU</span><span><i class="legend-destination"></i> MARKET</span></div></div>
+      <div class="objective-card"><div class="objective-icon">⌖</div><div><span class="eyebrow">YOUR NEXT MOVE</span><strong id="objectiveTitle">Build your inventory</strong><small id="objectiveText">Drive to the market and find a deal.</small></div><span class="objective-arrow">›</span></div>
+    </section>
+    <div class="speed-card"><div class="speed-number"><span id="speedLabel">0</span><small>KM/H</small></div><div class="speed-meter"><i id="speedMeter"></i></div><div class="gear-label">GEAR <b id="gearLabel">P</b></div></div>
+    <div class="interaction" id="interaction"><span class="keycap">E</span><span id="interactionText">Interact</span></div>
+    <div class="toast" id="toast"></div>
+    <div class="drive-controls"><div class="steer-controls"><button data-drive="left" aria-label="Steer left">‹</button><button data-drive="right" aria-label="Steer right">›</button></div><div class="pedal-controls"><button data-drive="brake" class="brake-btn">BRAKE</button><button data-drive="gas" class="gas-btn">ACCELERATE</button></div></div>
+    <nav class="bottom-nav"><button class="nav-item active" data-panel="home"><span class="nav-icon">⌂</span><span>LOT</span></button><button class="nav-item" data-panel="market"><span class="nav-icon">⌕</span><span>MARKET</span><b class="nav-badge">3</b></button><button class="nav-item" data-panel="garage"><span class="nav-icon">▤</span><span>GARAGE</span></button><button class="nav-item" data-panel="office"><span class="nav-icon">▣</span><span>OFFICE</span></button></nav>
+    <div class="panel-scrim" id="panelScrim"></div>
+    <aside class="side-panel" id="sidePanel" aria-hidden="true"><div class="panel-head"><div><span class="eyebrow" id="panelKicker">DEALER'S DESK</span><h2 id="panelTitle">Your lot</h2></div><button id="closePanel" class="close-btn" aria-label="Close">×</button></div><div id="panelContent" class="panel-content"></div></aside>
+    <section class="modal-layer" id="modalLayer" aria-hidden="true"><div id="modalCard" class="modal-card"></div></section>
+    <section class="start-screen" id="startScreen"><div class="start-backdrop"></div><div class="start-content"><div class="start-logo"><span class="brand-mark">LL</span><span>LOT<span class="brand-light">LEGENDS</span></span></div><div class="start-kicker"><span></span> YOUR EMPIRE STARTS HERE</div><h1>Every great<br />dealer starts <em>somewhere.</em></h1><p>Hunt down hidden gems. Make the deal. Build your dream dealership.</p><div class="start-actions"><button id="startButton" class="primary-btn">START YOUR STORY <span>→</span></button><div class="start-note"><span>↵</span> WASD TO DRIVE <i></i> E TO INTERACT</div></div><div class="start-foot"><span>RIVERSIDE DISTRICT</span><span>AN OPEN-ROAD DEALER SIMULATOR</span></div></div><div class="start-car-tag">01 <i></i> THE OPEN ROAD IS YOURS</div></section>
+    <div id="notice" class="notice" role="status" aria-live="polite"></div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
