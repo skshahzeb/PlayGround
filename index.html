@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101513" />
+  <title>Motorhaus — Car Dealer Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Motorhaus home"><span class="brand-mark">M</span><span class="brand-name">MOTOR<span>HAUS</span></span></a>
+      <div class="side-label">DEALERSHIP</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span> Overview <span class="nav-dot"></span></button>
+        <button class="nav-item" data-view="market"><span class="nav-icon">⌕</span> Car market <span class="nav-count" id="market-count">6</span></button>
+        <button class="nav-item" data-view="workshop"><span class="nav-icon">⚒</span> Workshop</button>
+        <button class="nav-item" data-view="drive"><span class="nav-icon">↗</span> Test drive</button>
+        <button class="nav-item" data-view="empire"><span class="nav-icon">▥</span> Empire</button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="side-tip"><div class="tip-icon">✳</div><div><b>Dealer tip</b><p id="dealer-tip">A clean car can sell for up to 12% more. Give your stock a wash.</p></div></div>
+      <div class="side-profile"><div class="avatar">JD</div><div class="profile-meta"><b>Jordan Davis</b><span>Rookie dealer</span></div><span class="more">···</span></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>YOUR DEALERSHIP</span><span class="crumb-slash">/</span><b id="crumb-title">Overview</b></div>
+        <div class="top-actions"><div class="weather"><span class="weather-icon">☀</span><span>68° <small>Clear skies</small></span></div><div class="top-divider"></div><div class="day-pill"><span class="live-dot"></span><span id="day-label">MON · DAY 01</span></div><button class="icon-button" id="sound-toggle" title="Toggle sound">♫</button><button class="avatar top-avatar">JD</button></div>
+      </header>
+      <div id="view-root" class="view-root"></div>
+    </main>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <script src="game.js"></script>
+</body>
+</html>
