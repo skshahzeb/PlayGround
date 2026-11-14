@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+<meta name="theme-color" content="#071b19" />
+<title>Boundary — Cricket Club</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main id="game">
+  <div id="stage"></div>
+  <div class="vignette"></div>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">B<span>•</span></div><div><b>BOUNDARY</b><small>CRICKET CLUB</small></div></div>
+    <div class="match-tag"><i></i><span>THE EVENING LEAGUE</span></div>
+    <button class="sound-button" id="soundToggle" aria-label="Toggle sound"><span id="soundIcon">♫</span></button>
+  </header>
+  <section class="scoreboard" id="scoreboard">
+    <div class="innings-label"><span class="live-dot"></span> YOUR INNINGS <span class="sep">/</span> <span id="overs">0.0</span> OVERS</div>
+    <div class="score-line"><strong id="score">0</strong><span class="score-divider">/</span><strong id="wickets">0</strong><span class="score-meta">RUNS</span></div>
+    <div class="score-bottom"><span id="targetLabel">TARGET 24</span><span class="score-rule"></span><span id="required">24 OFF 18</span></div>
+  </section>
+  <aside class="shot-card" id="shotCard">
+    <div class="card-kicker">SHOT OF THE OVER</div><div id="shotName" class="shot-name">—</div><div class="card-foot"><span class="card-mini-dot"></span><span id="shotHint">WATCH THE BALL</span></div>
+  </aside>
+  <div class="callout" id="callout"><span class="callout-icon">✦</span><span id="calloutText">READY WHEN YOU ARE</span></div>
+  <div class="bottom-ui">
+    <div class="batter-info"><div class="batter-avatar">11</div><div><strong>YOU</strong><small>RIGHT-HAND BAT</small></div></div>
+    <div class="delivery-status"><span class="status-pulse"></span><span id="deliveryText">SET YOUR FIELD</span></div>
+    <div class="controls-hint"><span class="keycap">SPACE</span><span>or tap to swing</span></div>
+  </div>
+  <div class="swing-control" id="swingControl" aria-label="Tap to swing">
+    <div class="swing-ring"></div><span class="swing-word">SWING</span><span class="swing-sub">TAP AT THE CREASE</span>
+  </div>
+  <div class="result-banner" id="resultBanner"><span id="resultText">FOUR!</span><small id="resultSub">BEAUTIFULLY PLACED</small></div>
+  <div class="start-screen" id="startScreen">
+    <div class="start-kicker"><span class="live-dot"></span> NIGHT MATCH · SEASON 01</div>
+    <h1>Own the<br><em>crease.</em></h1>
+    <p>Read the bowler. Find your moment.<br>Make every shot count.</p>
+    <button class="play-button" id="playButton"><span>PLAY MATCH</span><span class="play-arrow">↗</span></button>
+    <div class="start-meta"><span>3 OVERS</span><i></i><span>CHASE 24</span><i></i><span>ONE BAT. ONE CHANCE.</span></div>
+    <div class="start-orbit"></div>
+  </div>
+  <div class="end-screen hidden" id="endScreen">
+    <div class="start-kicker"><span class="live-dot"></span> INNINGS COMPLETE</div>
+    <h2 id="endTitle">A MATCH TO REMEMBER.</h2>
+    <div class="final-score"><b id="finalRuns">0</b><span>RUNS</span></div>
+    <p id="endCopy">The crowd will remember that one.</p>
+    <button class="play-button" id="againButton"><span>PLAY AGAIN</span><span class="play-arrow">↗</span></button>
+  </div>
+  <div class="mobile-tip" id="mobileTip">TAP THE FIELD TO SWING</div>
+</main>
+<script type="module" src="src/game.js"></script>
+</body>
+</html>
